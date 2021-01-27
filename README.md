@@ -3,6 +3,7 @@
 ## 解题思路
 
 - Springboot + mybatis-plus组成后台服务
+- 数据链接池换成了springboot-start-jdbc中的Hikari数据连接池
 - thyemleaf作为前端
 - 后台先实现分页功能，前端页面再控制分页的传入
 - 原本计划加入自定义pageSize的，但是放上去以后不好看，就砍掉了
@@ -25,6 +26,7 @@
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
   </dependency>
+  <!--springboot-start-jdbc 在mybatis-plus-boot-starter被引入-->
   <dependency>
       <groupId>com.baomidou</groupId>
       <artifactId>mybatis-plus-boot-starter</artifactId>
