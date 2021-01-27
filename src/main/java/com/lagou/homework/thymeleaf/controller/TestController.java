@@ -11,6 +11,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class TestController {
 
+    private Integer page = 1;
+    private Integer pageSize = 2;
+
     private final TArticleService tArticleService;
 
     public TestController(@Qualifier("tArticleService") TArticleService tArticleService) {
@@ -18,7 +21,13 @@ public class TestController {
     }
 
     @RequestMapping("test")
-    public ModelAndView toSuccess(int page, int pageSize){
+    public ModelAndView toSuccess(Integer page, Integer pageSize){
+        if(page==null){
+            page = this.page;
+        }
+        if(pageSize==null){
+            pageSize = this.pageSize;
+        }
         ModelAndView modelAndView = new ModelAndView();
 
         /**

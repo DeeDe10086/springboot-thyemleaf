@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- 载入文章头部页面，位置在/client文件夹下的header模板页面，模板名称th:fragment为header -->
+<!-- 载入文章头部页面，位置在/client文件夹下的header模板页面，模板名称th:fragment为header -->
 <div th:replace="/client/header::header(null,null)"/>
 <body>
 <div class="am-g am-g-fixed blog-fixed index-page">
@@ -26,10 +27,14 @@
                     </div>
                 </article>
             </div>
-            <div>
-                <a th:href="@{/test(page=1,pageSize=5)}">首页</a>
+            <div th:with="value = ((*{total}%2>0)? ((*{total} - *{total}%2)/2+1) : (*{total}/2))">
+                <a th:href="@{/test(page=1,pageSize=2)}">首页</a>
 
-                <a th:href="@{/test(page=*{total},pageSize=5)}">尾页</a>
+                <a th:if="(*{current}-1)>0" th:href="@{/test(page=*{current}-1,pageSize=2)}">上一页</a>
+                <a th:if="(*{current}+1)<=${value}" th:href="@{/test(page=*{current}+1,pageSize=2)}">下一页</a>
+
+                <a th:href="@{/test(page=${value},pageSize=2)}">尾页</a>
+
             </div>
         </div>
 
