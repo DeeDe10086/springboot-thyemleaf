@@ -5,6 +5,7 @@
 - Springboot + mybatis-plus组成后台服务
 - thyemleaf作为前端
 - 后台先实现分页功能，前端页面再控制分页的传入
+- 原本计划加入自定义pageSize的，但是放上去以后不好看，就砍掉了
 
 ## 解题过程
 
@@ -153,6 +154,7 @@
               </div>
           </div>
           <!--定义分页-->
+          <!--自定义页面大小的话，把pageSize改成从页面获取就行了-->
           <div th:with="value = ((*{total}%2>0)? ((*{total} - *{total}%2)/2+1) : (*{total}/2))">
               <a th:if="(*{current}-1)>0" th:href="@{/blog(page=1,pageSize=2)}">首页</a>
   
