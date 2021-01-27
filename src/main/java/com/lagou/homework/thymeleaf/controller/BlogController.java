@@ -9,18 +9,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class TestController {
+public class BlogController {
 
     private Integer page = 1;
     private Integer pageSize = 2;
 
     private final TArticleService tArticleService;
 
-    public TestController(@Qualifier("tArticleService") TArticleService tArticleService) {
+    public BlogController(@Qualifier("tArticleService") TArticleService tArticleService) {
         this.tArticleService = tArticleService;
     }
 
-    @RequestMapping("test")
+    @RequestMapping("blog")
     public ModelAndView toSuccess(Integer page, Integer pageSize){
         if(page==null){
             page = this.page;

@@ -18,6 +18,9 @@ public class TArticleServiceImpl extends ServiceImpl<TArticleMapper, TArticle> i
 
     @Override
     public Page<TArticle> getArticles(Page<TArticle> page){
+        /**
+         * 直接引用mybatis-plus的分页方法
+         */
         super.page(page);
         return page;
     }

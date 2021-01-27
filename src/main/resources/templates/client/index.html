@@ -8,36 +8,37 @@
     <div class="am-u-md-8 am-u-sm-12">
         <!--文章遍历并分页展示 : 需要同学们手动完成，基本样式已经给出，请使用th标签及表达式完成页面展示 -->
         <div th:object="${result}">
-            <div th:each="art:*{records}">
-                <article class="am-g blog-entry-article">
+            <div style="height: 610px;">
+                <div th:each="art:*{records}">
+                    <article class="am-g blog-entry-article">
 
-                    <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
-                        <!-- 文章分类 -->
-                        <span class="blog-color" style="font-size: 15px;"><a>默认分类</a></span>
-                        <span>&nbsp;&nbsp;&nbsp;</span>
-                        <!-- 发布时间 -->
-                        <span style="font-size: 15px;" th:text="'发布于 '+ ${art.created}"/>
-                        <h2>
-                            <!-- 文章标题 -->
-                            <div><a style="color: #0f9ae0;font-size: 20px;" th:text="${art.title}"/>
-                            </div>
-                        </h2>
-                        <!-- 文章内容-->
-                        <div style="font-size: 16px;" th:text="${art.content}"/>
-                    </div>
-                </article>
+                        <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
+                            <!-- 文章分类 -->
+                            <span class="blog-color" style="font-size: 15px;"><a>默认分类</a></span>
+                            <span>&nbsp;&nbsp;&nbsp;</span>
+                            <!-- 发布时间 -->
+                            <span style="font-size: 15px;" th:text="'发布于 '+ ${art.created}"/>
+                            <h2>
+                                <!-- 文章标题 -->
+                                <div><a style="color: #0f9ae0;font-size: 20px;" th:text="${art.title}"/>
+                                </div>
+                            </h2>
+                            <!-- 文章内容-->
+                            <div style="font-size: 16px;" th:text="${art.content}"/>
+                        </div>
+                    </article>
+                </div>
             </div>
+            <!--定义分页-->
             <div th:with="value = ((*{total}%2>0)? ((*{total} - *{total}%2)/2+1) : (*{total}/2))">
-                <a th:href="@{/test(page=1,pageSize=2)}">首页</a>
+                <a th:if="(*{current}-1)>0" th:href="@{/blog(page=1,pageSize=2)}">首页</a>
 
-                <a th:if="(*{current}-1)>0" th:href="@{/test(page=*{current}-1,pageSize=2)}">上一页</a>
-                <a th:if="(*{current}+1)<=${value}" th:href="@{/test(page=*{current}+1,pageSize=2)}">下一页</a>
+                <a th:if="(*{current}-1)>0" th:href="@{/blog(page=*{current}-1,pageSize=2)}">上一页</a>
+                <a th:if="(*{current}+1)<=${value}" th:href="@{/blog(page=*{current}+1,pageSize=2)}">下一页</a>
 
-                <a th:href="@{/test(page=${value},pageSize=2)}">尾页</a>
-
+                <a th:if="(*{current}+1)<=${value}" th:href="@{/blog(page=${value},pageSize=2)}">尾页</a>
             </div>
         </div>
-
     </div>
     <!-- 博主信息描述 -->
     <div class="am-u-md-4 am-u-sm-12 blog-sidebar">
