@@ -1,0 +1,15 @@
+spring:
+  thymeleaf:
+    cache: false
+    encoding: utf-8
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///blog_system
+    username: root
+    password: 123456
+    hikari:
+      maximum-pool-size: 4
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

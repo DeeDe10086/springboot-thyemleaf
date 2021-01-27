@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lagou.homework.thymeleaf.mapper.TArticleMapper">
+    <resultMap type="com.lagou.homework.thymeleaf.entity.TArticle" id="TArticleMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="created" column="created" jdbcType="TIMESTAMP"/>
+        <result property="modified" column="modified" jdbcType="TIMESTAMP"/>
+        <result property="categories" column="categories" jdbcType="VARCHAR"/>
+        <result property="tags" column="tags" jdbcType="VARCHAR"/>
+        <result property="allowComment" column="allow_comment" jdbcType="INTEGER"/>
+        <result property="thumbnail" column="thumbnail" jdbcType="VARCHAR"/>
+    </resultMap>
+</mapper>
